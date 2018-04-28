@@ -1,0 +1,13 @@
+#-------------------------------------------------------
+# Hadoop 路径
+#-------------------------------------------------------
+debug: True
+name_node: ns15
+# 数据集市名称
+data_mart: cmo_ipc
+# 基路径
+base: hdfs://{name_node}/user
+# DFS路径
+dfs  : "{base}/{data_mart}"
+# hive表路径
+hive  : "{dfs}/<?e>.db"

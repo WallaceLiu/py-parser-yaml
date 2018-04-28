@@ -1,0 +1,44 @@
+#-------------------------------------------------------
+# xintonglu
+#-------------------------------------------------------
+debug: True
+name: yourtaskname
+# 任务
+task:
+  name: "rdc_lr_fr_{name}"
+  spark:
+    shell:
+      - [--master, yarn-client]
+      - [--num-executors, 10]
+      - [--executor-memory, 5g]
+      - [--executor-cores, 4]
+      - [--driver-memory,10g]
+      - [--queue, root.bdp_jmart_cmo_ipc_union.bdp_jmart_ipc_spark]
+      - [--conf, spark.pyspark.python=python2.7]
+      - [--spark.default.parallelism, 100]
+      - [--py-files, "conf_lr.py,alEnv_xtl.py"]
+    set: ~
+  hive: ~
+# DFS信息
+dfs:
+  name_node: ns15
+  # 数据集市名称
+  data_mart: cmo_ipc
+  # 基路径
+  base: hdfs://{dfs.name_node}/user
+  # DFS路径
+  dfs  : "{dfs.base}/{dfs.data_mart}"
+  # hive表路径
+  hive  : "{dfs.dfs}/<?e>.db"
+model:
+  url:
+    input:
+      - timeseries:
+        - "{dfs.hive}/app_sfs_xtl_ts/key=salesForecast"
+        - "{dfs.hive}/app_sfs_xtl_ts/key=priceBeforeDiscount"
+        - "{dfs.hive}/app_sfs_xtl_ts/key=priceAfterDiscount"
+        - "{dfs.hive}/app_sfs_xtl_ts/key=stockQuantity"
+        - "{dfs.hive}/app_sfs_xtl_ts/key=vendibility"
+    output:
+      dir: "{dfs.dfs}/rdc_forecast_results_lr_xtl/dt={v_ps}/forecast_{dc}_{cate}"
+      file: "{model.url.output.dir}/result_{period}_{predict}"
