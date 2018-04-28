@@ -7,36 +7,35 @@ Created on Tue Jun 27 15:29:37 2017
 通用配置文件
 """
 import unittest
-#from parseyml.env.dfs import Dfs
+from parseyml.env.dfs import Dfs
 from parseyml.env.env import Env
 
 
 class TestEnv(unittest.TestCase):
 
-    # def test_dfs(self):
-    #     print('---------------------------------------')
-    #     print('|    Dfs Info')
-    #     print('---------------------------------------')
-    #     dfs = Dfs.create("test_dfs.yml")
-    #     print('     ---------------------------------------')
-    #     print('     |    Result Info')
-    #     print('     ---------------------------------------')
-    #     print('dfs.debug', dfs.debug)
-    #     print('dfs.raw', dfs.raw)
-    #     print('dfs.rawFile', dfs.rawFile)
-    #     print('dfs.metaSelf', dfs.metaSelf)
-    #     print('dfs.name_node', dfs.name_node)
-    #     print('dfs.data_mart', dfs.data_mart)
-    #     print('dfs.base', dfs.base)
-    #     print('dfs.dfs', dfs.dfs)
-    #     print('dfs.hive', dfs.hive)
-    #
+    def test_dfs(self):
+        print('---------------------------------------')
+        print('|    Dfs Info')
+        print('---------------------------------------')
+        dfs = Dfs.create("test_dfs.yml")
+        print('     ---------------------------------------')
+        print('     |    Result Info')
+        print('     ---------------------------------------')
+        print('dfs.debug', dfs.debug)
+        print('dfs.raw', dfs.raw)
+        print('dfs.rawFile', dfs.rawFile)
+        print('dfs.metaSelf', dfs.metaSelf)
+        print('dfs.name_node', dfs.name_node)
+        print('dfs.data_mart', dfs.data_mart)
+        print('dfs.base', dfs.base)
+        print('dfs.dfs', dfs.dfs)
+        print('dfs.hive', dfs.hive)
 
     def test_biz_property(self):
         print('---------------------------------------')
         print('|    Biz Meta Info')
         print('---------------------------------------')
-        op = Env.create("test_env.yml")
+        op = Env.create("test_envdemo.yml")
         print('     ---------------------------------------')
         print('     |    property Result Info')
         print('     ---------------------------------------')
@@ -61,15 +60,15 @@ class TestEnv(unittest.TestCase):
         print('op.dfs.hive', getattr(op.dfs, "hive", "<hive> Not Found"))
         print('---------------------------------------------------')
         print('op.model.dc_list', getattr(op.model, "dc_list", "<dc> Not Found"))
-        print(
-            'op.model.url.input[0].timeseries', getattr(op.model.url.input[0], "timeseries", "<timeseries> Not Found"))
-        print('op.model.url.input[1].cate_seasonal.isBook',
-              getattr(op.model.url.input[1].cate_seasonal, "isBook", "<isBook> Not Found"))
-        print('op.model.url.input[2].calendar.b', getattr(op.model.url.input[2].calendar[0], "b", "<b> Not Found"))
-        print('op.model.url.input[2].calendar.e', getattr(op.model.url.input[2].calendar[1], "e", "<e> Not Found"))
-        print('op.model.url.input[3].promotion', getattr(op.model.url.input[3], "promotion", "<promotion> Not Found"))
-        print('op.model.url.output.dir', getattr(op.model.url.output, "dir", "<dir> Not Found"))
-        print('op.model.url.output.file', getattr(op.model.url.output, "file", "<file> Not Found"))
+        # print(
+        #     'op.model.url.input[0].timeseries', getattr(op.model.url.input[0], "timeseries", "<timeseries> Not Found"))
+        # print('op.model.url.input[1].cate_seasonal.isBook',
+        #       getattr(op.model.url.input[1].cate_seasonal, "isBook", "<isBook> Not Found"))
+        # print('op.model.url.input[2].calendar.b', getattr(op.model.url.input[2].calendar[0], "b", "<b> Not Found"))
+        # print('op.model.url.input[2].calendar.e', getattr(op.model.url.input[2].calendar[1], "e", "<e> Not Found"))
+        # print('op.model.url.input[3].promotion', getattr(op.model.url.input[3], "promotion", "<promotion> Not Found"))
+        # print('op.model.url.output.dir', getattr(op.model.url.output, "dir", "<dir> Not Found"))
+        # print('op.model.url.output.file', getattr(op.model.url.output, "file", "<file> Not Found"))
 
     # def test_metaSelf(self):
     #     print('---------------------------------------')
