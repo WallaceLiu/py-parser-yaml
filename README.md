@@ -1,5 +1,5 @@
 # py-parser-yaml
-by python reflect, parser yaml file to object instance, support variables
+by python reflect, parser yaml file to object instance, support variables, const
 # 示例
 ```python
 print('---------------------------------------')

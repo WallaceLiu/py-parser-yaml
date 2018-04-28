@@ -59,56 +59,6 @@ class TestEnv(unittest.TestCase):
         print('op.dfs.dfs', getattr(op.dfs, "dfs", "<dfs> Not Found"))
         print('op.dfs.hive', getattr(op.dfs, "hive", "<hive> Not Found"))
         print('---------------------------------------------------')
-        # print(
-        #     'op.model.url.input[0].timeseries', getattr(op.model.url.input[0], "timeseries", "<timeseries> Not Found"))
-        # print('op.model.url.input[1].cate_seasonal.isBook',
-        #       getattr(op.model.url.input[1].cate_seasonal, "isBook", "<isBook> Not Found"))
-        # print('op.model.url.input[2].calendar.b', getattr(op.model.url.input[2].calendar[0], "b", "<b> Not Found"))
-        # print('op.model.url.input[2].calendar.e', getattr(op.model.url.input[2].calendar[1], "e", "<e> Not Found"))
-        # print('op.model.url.input[3].promotion', getattr(op.model.url.input[3], "promotion", "<promotion> Not Found"))
-        # print('op.model.url.output.dir', getattr(op.model.url.output, "dir", "<dir> Not Found"))
-        # print('op.model.url.output.file', getattr(op.model.url.output, "file", "<file> Not Found"))
-
-    # def test_metaSelf(self):
-    #     print('---------------------------------------')
-    #     print('|    Biz Info')
-    #     print('---------------------------------------')
-    #     op = Biz.create("test_env.yml")
-    #     print('     ---------------------------------------')
-    #     print('     |    MetaSelf Result Info')
-    #     print('     ---------------------------------------')
-    #     print('op.meta', op.meta)
-    #     print('op.metaSelf', op.metaSelf)
-    #     print('op.dfs.metaSelf', op.dfs.metaSelf)
-    #     print('op.env.url.metaSelf', op.env.url.metaSelf)
-    #
-    #     print('op.env.url.input[0].metaSelf', op.env.url.input[0].metaSelf)
-    #     print('op.env.url.input[1].metaSelf', op.env.url.input[1].metaSelf)
-    #     print('op.env.url.input[1].seasonal.metaSelf', op.env.url.input[1].seasonal.metaSelf)
-    #     print('op.env.url.input[2].metaSelf', op.env.url.input[2].metaSelf)
-    #     print('op.env.url.input[3].metaSelf', op.env.url.input[3].metaSelf)
-    #     print('op.env.url.input[4].metaSelf', op.env.url.input[4].metaSelf)
-
-    # def test_biz_option(self):
-    #     print('---------------------------------------')
-    #     print('|    Biz Info')
-    #     print('---------------------------------------')
-    #     op = Biz.create("test_env.yml")
-    #     op.parseExpr()
-    #     print('     ---------------------------------------')
-    #     print('     |    Option Result Info')
-    #     print('     ---------------------------------------')
-    #     print('createSparkSubmit', op.createSparkSubmit())
-    # print('op.metaSelf', op.metaSelf)
-    # print('op.dfs.metaSelf', op.dfs.metaSelf)
-    # print('op.env.url.metaSelf', op.env.url.metaSelf)
-    #
-    # print('op.env.url.input[0].metaSelf', op.env.url.input[0].metaSelf)
-    # print('op.env.url.input[1].metaSelf', op.env.url.input[1].metaSelf)
-    # print('op.env.url.input[1].seasonal.metaSelf', op.env.url.input[1].seasonal.metaSelf)
-    # print('op.env.url.input[2].metaSelf', op.env.url.input[2].metaSelf)
-    # print('op.env.url.input[3].metaSelf', op.env.url.input[3].metaSelf)
-    # print('op.env.url.input[4].metaSelf', op.env.url.input[4].metaSelf)
 
 
 if __name__ == '__main__':

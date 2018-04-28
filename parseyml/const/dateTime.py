@@ -5,7 +5,7 @@ Created on Tue Jun 27 15:29:37 2017
 @author: liuning800203@gmail.com
 
 """
-from parseyml.utils.dateTime import yesterday, tomorrow, today
+from parseyml.utils.utils import yesterday, tomorrow, today
 
 format = '%Y-%m-%d'
 
