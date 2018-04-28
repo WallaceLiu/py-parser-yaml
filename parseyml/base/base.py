@@ -2,11 +2,10 @@
 """
 Created on Tue Jun 27 15:29:37 2017
 
-@author:
+@author: liuning800203@gmail.com
 
 """
 import inspect
-import sys
 
 
 class Base(object):

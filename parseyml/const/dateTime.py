@@ -2,18 +2,17 @@
 """
 Created on Tue Jun 27 15:29:37 2017
 
-@author:
-
-日期常量
+@author: liuning800203@gmail.com
 
 """
+from parseyml.utils.dateTime import yesterday, tomorrow, today
 
-from parseyml.utils.dateTime import yesterday, tomorrow, today, toStr
+format = '%Y-%m-%d'
 
-TODAY = toStr(today())
+TODAY = today().strftime(format)
 
 TODAY_YEAR = today().year
 
-YESTERDAY = toStr(yesterday())
+YESTERDAY = yesterday().strftime(format)
 
-TOMORROW = toStr(tomorrow())
+TOMORROW = tomorrow().strftime(format)

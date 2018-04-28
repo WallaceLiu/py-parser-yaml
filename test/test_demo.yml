@@ -8,7 +8,7 @@ cmd:
   option:
     - ["option1", "option 1", "--option1", False, 0]
     - ["option2", "option 2", "--option2", False, 0]
-    - ["option3", "option 3", "--option3", False, 0]
+    - ["option3", "option 3", "--option3", False, '{const.TODAY}']
 task:
   name: "your_task_{name}"
   spark:
@@ -23,8 +23,8 @@ task:
     set: ~
   hive: ~
 dfs:
-  name_node: ns15
-  data_mart: cmo_ipc
+  name_node: ns
+  data_mart: your_deptarment
   base: hdfs://{dfs.name_node}/user
   dfs  : "{dfs.base}/{dfs.data_mart}"
   hive  : "{dfs.dfs}/<?e>.db"
@@ -32,7 +32,7 @@ model:
   url:
     input:
       - timeseries:
-        - "{dfs.hive}/app_your_timeseries/key=salesForecast"
+        - "{dfs.hive}/app_your_timeseries/key=sales"
         - "{dfs.hive}/app_your_timeseries/key=priceBeforeDiscount"
         - "{dfs.hive}/app_your_timeseries/key=priceAfterDiscount"
         - "{dfs.hive}/app_your_timeseries/key=stockQuantity"

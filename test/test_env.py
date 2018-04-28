@@ -35,7 +35,7 @@ class TestEnv(unittest.TestCase):
         print('---------------------------------------')
         print('|    Biz Meta Info')
         print('---------------------------------------')
-        op = Env.create("test_envdemo.yml")
+        op = Env.create("test_demo.yml")
         print('     ---------------------------------------')
         print('     |    property Result Info')
         print('     ---------------------------------------')

@@ -5,9 +5,7 @@ Created on Tue Jun 27 15:29:37 2017
 @author:
 
 """
-import json
 import yaml
-from parseyml.utils.io import IOUtils
 import sys
 import os
 from parseyml.base.base import Base
@@ -21,11 +19,6 @@ else:
 class LoaderUtils(Base):
     def __init__(self):
         pass
-
-    @staticmethod
-    def decodeJson(filePath):
-        data = IOUtils.readAll(filePath)
-        return json.loads(data)
 
     @staticmethod
     def decodeYml(filePath):

@@ -1,9 +1,9 @@
 #-------------------------------------------------------
-# Hadoop
+# your hdfs yaml config file
 #-------------------------------------------------------
 debug: True
-name_node: ns15
-data_mart: cmo_ipc
+name_node: ns
+data_mart: your_deptarment
 base: hdfs://{name_node}/user
 dfs  : "{base}/{data_mart}"
 hive  : "{dfs}/<?e>.db"
