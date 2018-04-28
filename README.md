@@ -1,2 +1,32 @@
 # py-parser-yaml
-by python reflect, parser yaml file to object instance, support express
+by python reflect, parser yaml file to object instance, support variables
+# 示例
+```python
+print('---------------------------------------')
+print('|    Biz Meta Info')
+print('---------------------------------------')
+op = Env.create("test_demo_complex.yml")
+print('     ---------------------------------------')
+print('     |    property Result Info')
+print('     ---------------------------------------')
+print('op.debug', getattr(op, "debug", "<debug> Not Found"))
+print('---------------------------------------------------')
+print('op.name', getattr(op, "name", "<name> Not Found"))
+print('---------------------------------------------------')
+print('op.cmd.loc', getattr(op.cmd, "loc", "<loc> Not Found"))
+print('op.cmd.option', getattr(op.cmd, "option", "<option> Not Found"))
+print('---------------------------------------------------')
+print('op.task.name', getattr(op.task, "name", "<name> Not Found"))
+print('op.task.spark', getattr(op.task, "spark", "<spark> Not Found"))
+print('op.task.hive', getattr(op.task, "hive", "<hive> Not Found"))
+print('---------------------------------------------------')
+print('op.cmd.loc', getattr(op.cmd, "loc", "<loc> Not Found"))
+print('op.cmd.option', getattr(op.cmd, "option", "<option> Not Found"))
+print('---------------------------------------------------')
+print('op.dfs.name_node', getattr(op.dfs, "name_node", "<name_node> Not Found"))
+print('op.dfs.data_mart', getattr(op.dfs, "data_mart", "<data_mart> Not Found"))
+print('op.dfs.base', getattr(op.dfs, "base", "<base> Not Found"))
+print('op.dfs.dfs', getattr(op.dfs, "dfs", "<dfs> Not Found"))
+print('op.dfs.hive', getattr(op.dfs, "hive", "<hive> Not Found"))
+print('---------------------------------------------------')
+```

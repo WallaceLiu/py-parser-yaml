@@ -59,7 +59,6 @@ class TestEnv(unittest.TestCase):
         print('op.dfs.dfs', getattr(op.dfs, "dfs", "<dfs> Not Found"))
         print('op.dfs.hive', getattr(op.dfs, "hive", "<hive> Not Found"))
         print('---------------------------------------------------')
-        print('op.model.dc_list', getattr(op.model, "dc_list", "<dc> Not Found"))
         # print(
         #     'op.model.url.input[0].timeseries', getattr(op.model.url.input[0], "timeseries", "<timeseries> Not Found"))
         # print('op.model.url.input[1].cate_seasonal.isBook',
