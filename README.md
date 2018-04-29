@@ -1,6 +1,99 @@
 # py-parser-yaml
 by python reflect, parser yaml file to object instance, support variables, const
-# 示例
+# 示例1
+```text
+debug: True
+name_node: ns
+data_mart: your_deptarment
+base: hdfs://{name_node}/user
+dfs  : "{base}/{data_mart}"
+schema  : "{dfs}/<?e>.db"
+```
+运行：
+```python
+dfs = Dfs.create("test_deom_simple.yml")
+print('---------------------------------------')
+print('|    Env Meta Info')
+print('---------------------------------------')
+print('dfs.raw', dfs.raw)
+print('dfs.rawFile', dfs.rawFile)
+print('---------------------------------------')
+print('|    Env Properties Info')
+print('---------------------------------------')
+print('dfs.metaSelf', dfs.metaSelf)
+print('---------------------------------------')
+print('|    Env Properties Info')
+print('---------------------------------------')
+print('dfs.debug', dfs.debug)
+print('dfs.name_node', dfs.name_node)
+print('dfs.data_mart', dfs.data_mart)
+print('dfs.base', dfs.base)
+print('dfs.dfs', dfs.dfs)
+print('dfs.schema', dfs.schema)
+```
+结果：
+```text
+|    Env Meta Info
+---------------------------------------
+dfs.raw {'debug': True, 'name_node': 'ns', 'data_mart': 'your_deptarment', 'base': 'hdfs://{name_node}/user', 'dfs': '{base}/{data_mart}', 'schema': '{dfs}/<?e>.db'}
+dfs.rawFile test_deom_simple.yml
+---------------------------------------
+|    Env Properties Info
+---------------------------------------
+dfs.metaSelf ['debug', 'name_node', 'data_mart', 'base', 'dfs', 'schema']
+---------------------------------------
+|    Env Properties Info
+---------------------------------------
+dfs.debug True
+dfs.name_node ns
+dfs.data_mart your_deptarment
+dfs.base hdfs://ns/user
+dfs.dfs hdfs://ns/user/your_deptarment
+dfs.schema hdfs://ns/user/your_deptarment/dev.db
+```
+
+# 示例2：
+```text
+debug: True
+name: your_project_name
+cmd:
+  loc: "./your_spark_file.py"
+  option:
+    - ["option1", "option 1", "--option1", False, 0]
+    - ["option2", "option 2", "--option2", False, 0]
+    - ["option3", "option 3", "--option3", False, '{const.TODAY}']
+task:
+  name: "your_task_{name}"
+  spark:
+    shell:
+      - [--master, yarn-client]
+      - [--num-executors, 10]
+      - [--executor-memory, 5g]
+      - [--executor-cores, 4]
+      - [--driver-memory, 10g]
+      - [--conf, spark.pyspark.python=python2.7]
+      - [--spark.default.parallelism, 100]
+  hive: ~
+dfs:
+  name_node: ns
+  data_mart: your_dept
+  base: hdfs://{dfs.name_node}/user
+  dfs  : "{dfs.base}/{dfs.data_mart}"
+  schema  : "{dfs.dfs}/<?e>.db"
+model:
+  url:
+    input:
+      - timeseries:
+        - "{dfs.schema}/app_your_timeseries/key=sales"
+        - "{dfs.schema}/app_your_timeseries/key=priceBeforeDiscount"
+        - "{dfs.schema}/app_your_timeseries/key=priceAfterDiscount"
+        - "{dfs.schema}/app_your_timeseries/key=stockQuantity"
+        - "{dfs.schema}/app_your_timeseries/key=vendibility"
+    output:
+      dir: "{dfs.dfs}/app_your_forecast_result/dt={v_ps}/forecast_{dc}_{cate}"
+      file: "{model.url.output.dir}/result_{period}_{predict}"
+```
+执行：
 ```python
 print('---------------------------------------')
 print('|    Biz Meta Info')
@@ -29,4 +122,34 @@ print('op.dfs.base', getattr(op.dfs, "base", "<base> Not Found"))
 print('op.dfs.dfs', getattr(op.dfs, "dfs", "<dfs> Not Found"))
 print('op.dfs.hive', getattr(op.dfs, "hive", "<hive> Not Found"))
 print('---------------------------------------------------')
+```
+结果：
+```text
+|    Env Meta Info
+---------------------------------------
+dfs.raw {'debug': True, 'name': 'your_project_name', 'cmd': {'loc': './your_spark_file.py', 'option': [['option1', 'option 1', '--option1', False, 0], ['option2', 'option 2', '--option2', False, 0], ['option3', 'option 3', '--option3', False, '{const.TODAY}']]}, 'task': {'name': 'your_task_{name}', 'spark': {'shell': [['--master', 'yarn-client'], ['--num-executors', 10], ['--executor-memory', '5g'], ['--executor-cores', 4], ['--driver-memory', '10g'], ['--conf', 'spark.pyspark.python=python2.7'], ['--spark.default.parallelism', 100]]}, 'hive': None}, 'dfs': {'name_node': 'ns', 'data_mart': 'your_dept', 'base': 'hdfs://{dfs.name_node}/user', 'dfs': '{dfs.base}/{dfs.data_mart}', 'schema': '{dfs.dfs}/<?e>.db'}, 'model': {'url': {'input': [{'timeseries': ['{dfs.schema}/app_your_timeseries/key=sales', '{dfs.schema}/app_your_timeseries/key=priceBeforeDiscount', '{dfs.schema}/app_your_timeseries/key=priceAfterDiscount', '{dfs.schema}/app_your_timeseries/key=stockQuantity', '{dfs.schema}/app_your_timeseries/key=vendibility']}], 'output': {'dir': '{dfs.dfs}/app_your_forecast_result/dt={v_ps}/forecast_{dc}_{cate}', 'file': '{model.url.output.dir}/result_{period}_{predict}'}}}}
+dfs.rawFile test_demo_complex.yml
+---------------------------------------
+|    property Info
+---------------------------------------
+env.debug True
+---------------------------------------------------
+env.name your_project_name
+---------------------------------------------------
+env.cmd.loc ./your_spark_file.py
+env.cmd.option [['option1', 'option 1', '--option1', False, 0], ['option2', 'option 2', '--option2', False, 0], ['option3', 'option 3', '--option3', False, '2018-04-29']]
+---------------------------------------------------
+env.task.name your_task_your_project_name
+env.task.spark.shell [['--master', 'yarn-client'], ['--num-executors', 10], ['--executor-memory', '5g'], ['--executor-cores', 4], ['--driver-memory', '10g'], ['--conf', 'spark.pyspark.python=python2.7'], ['--spark.default.parallelism', 100]]
+env.task.hive None
+---------------------------------------------------
+env.dfs.name_node ns
+env.dfs.data_mart your_dept
+env.dfs.base hdfs://ns/user
+env.dfs.dfs hdfs://ns/user/your_dept
+env.dfs.schema hdfs://ns/user/your_dept/dev.db
+---------------------------------------------------
+env.model.url.input[0].timeseries ['hdfs://ns/user/your_dept/dev.db/app_your_timeseries/key=sales', 'hdfs://ns/user/your_dept/dev.db/app_your_timeseries/key=priceBeforeDiscount', 'hdfs://ns/user/your_dept/dev.db/app_your_timeseries/key=priceAfterDiscount', 'hdfs://ns/user/your_dept/dev.db/app_your_timeseries/key=stockQuantity', 'hdfs://ns/user/your_dept/dev.db/app_your_timeseries/key=vendibility']
+env.model.url.output.dir hdfs://ns/user/your_dept/app_your_forecast_result/dt={v_ps}/forecast_{dc}_{cate}
+env.model.url.output.file hdfs://ns/user/your_dept/app_your_forecast_result/dt={v_ps}/forecast_{dc}_{cate}/result_{period}_{predict}
 ```
