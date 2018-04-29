@@ -13,23 +13,26 @@ from parseyml.env.env import Env
 
 class TestEnv(unittest.TestCase):
 
-    # def test_dfs(self):
-    #     print('---------------------------------------')
-    #     print('|    Dfs Info')
-    #     print('---------------------------------------')
-    #     dfs = Dfs.create("test_deom_simple.yml")
-    #     print('     ---------------------------------------')
-    #     print('     |    Result Info')
-    #     print('     ---------------------------------------')
-    #     print('dfs.debug', dfs.debug)
-    #     print('dfs.raw', dfs.raw)
-    #     print('dfs.rawFile', dfs.rawFile)
-    #     print('dfs.metaSelf', dfs.metaSelf)
-    #     print('dfs.name_node', dfs.name_node)
-    #     print('dfs.data_mart', dfs.data_mart)
-    #     print('dfs.base', dfs.base)
-    #     print('dfs.dfs', dfs.dfs)
-    #     print('dfs.hive', dfs.hive)
+    def test_dfs(self):
+        dfs = Dfs.create("test_deom_simple.yml")
+        print('---------------------------------------')
+        print('|    Env Meta Info')
+        print('---------------------------------------')
+        print('dfs.raw', dfs.raw)
+        print('dfs.rawFile', dfs.rawFile)
+        print('---------------------------------------')
+        print('|    Env Properties Info')
+        print('---------------------------------------')
+        print('dfs.metaSelf', dfs.metaSelf)
+        print('---------------------------------------')
+        print('|    Env Properties Info')
+        print('---------------------------------------')
+        print('dfs.debug', dfs.debug)
+        print('dfs.name_node', dfs.name_node)
+        print('dfs.data_mart', dfs.data_mart)
+        print('dfs.base', dfs.base)
+        print('dfs.dfs', dfs.dfs)
+        print('dfs.schema', dfs.schema)
 
     def test_biz_property(self):
         env = Env.create("test_demo_complex.yml")
@@ -58,7 +61,8 @@ class TestEnv(unittest.TestCase):
         print('env.dfs.dfs', getattr(env.dfs, "dfs", "<dfs> Not Found"))
         print('env.dfs.schema', getattr(env.dfs, "schema", "<schema> Not Found"))
         print('---------------------------------------------------')
-        print('env.model.url.input[0].timeseries', getattr(env.model.url.input[0], "timeseries", "<timeseries> Not Found"))
+        print('env.model.url.input[0].timeseries',
+              getattr(env.model.url.input[0], "timeseries", "<timeseries> Not Found"))
         print('env.model.url.output.dir', getattr(env.model.url.output, "dir", "<dir> Not Found"))
         print('env.model.url.output.file', getattr(env.model.url.output, "file", "<file> Not Found"))
 

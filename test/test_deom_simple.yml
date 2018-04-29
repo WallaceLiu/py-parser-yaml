@@ -6,4 +6,4 @@ name_node: ns
 data_mart: your_deptarment
 base: hdfs://{name_node}/user
 dfs  : "{base}/{data_mart}"
-hive  : "{dfs}/<?e>.db"
+schema  : "{dfs}/<?e>.db"
