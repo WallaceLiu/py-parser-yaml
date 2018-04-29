@@ -1,6 +1,6 @@
 # py-parser-yaml
-by python reflect, parser yaml file to object instance, support variables, const
-# 示例1
+by python reflect, parse .yaml file to object instance, support inject variables, const...
+# example 1
 ```text
 debug: True
 name_node: ns
@@ -51,8 +51,7 @@ dfs.base hdfs://ns/user
 dfs.dfs hdfs://ns/user/your_deptarment
 dfs.schema hdfs://ns/user/your_deptarment/dev.db
 ```
-
-# 示例2：
+# example 2
 ```text
 debug: True
 name: your_project_name
