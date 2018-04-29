@@ -17,26 +17,25 @@ task:
       - [--num-executors, 10]
       - [--executor-memory, 5g]
       - [--executor-cores, 4]
-      - [--driver-memory,10g]
+      - [--driver-memory, 10g]
       - [--conf, spark.pyspark.python=python2.7]
       - [--spark.default.parallelism, 100]
-    set: ~
   hive: ~
 dfs:
   name_node: ns
-  data_mart: your_deptarment
+  data_mart: your_dept
   base: hdfs://{dfs.name_node}/user
   dfs  : "{dfs.base}/{dfs.data_mart}"
-  hive  : "{dfs.dfs}/<?e>.db"
+  schema  : "{dfs.dfs}/<?e>.db"
 model:
   url:
     input:
       - timeseries:
-        - "{dfs.hive}/app_your_timeseries/key=sales"
-        - "{dfs.hive}/app_your_timeseries/key=priceBeforeDiscount"
-        - "{dfs.hive}/app_your_timeseries/key=priceAfterDiscount"
-        - "{dfs.hive}/app_your_timeseries/key=stockQuantity"
-        - "{dfs.hive}/app_your_timeseries/key=vendibility"
+        - "{dfs.schema}/app_your_timeseries/key=sales"
+        - "{dfs.schema}/app_your_timeseries/key=priceBeforeDiscount"
+        - "{dfs.schema}/app_your_timeseries/key=priceAfterDiscount"
+        - "{dfs.schema}/app_your_timeseries/key=stockQuantity"
+        - "{dfs.schema}/app_your_timeseries/key=vendibility"
     output:
       dir: "{dfs.dfs}/app_your_forecast_result/dt={v_ps}/forecast_{dc}_{cate}"
       file: "{model.url.output.dir}/result_{period}_{predict}"
