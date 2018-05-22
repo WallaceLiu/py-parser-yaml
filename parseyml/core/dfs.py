@@ -7,7 +7,7 @@ Created on Tue Jun 27 15:29:37 2017
 """
 
 from parseyml.utils.utils import decodeYml
-from parseyml.genv.base import BaseEnv
+from parseyml.core.base import BaseEnv
 import inspect
 
 

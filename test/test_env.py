@@ -7,8 +7,8 @@ Created on Tue Jun 27 15:29:37 2017
 通用配置文件
 """
 import unittest
-from parseyml.genv.dfs import Dfs
-from parseyml.genv.env import Env
+from parseyml.core.dfs import Dfs
+from parseyml.core.env import Env
 
 
 class TestEnv(unittest.TestCase):

@@ -6,9 +6,9 @@ Created on Tue Jun 27 15:29:37 2017
 
 """
 from parseyml.utils.utils import *
-from parseyml.genv.base import BaseEnv, base
+from parseyml.core.base import BaseEnv, base
 import parseyml.const.dateTime as CONST_DT
-from parseyml.genv.const import *
+from parseyml.core.const import *
 import inspect
 
 
