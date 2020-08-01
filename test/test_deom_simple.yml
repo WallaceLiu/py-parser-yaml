@@ -1,9 +1,9 @@
 #-------------------------------------------------------
-# your hdfs yaml config file
+# your yaml config file
 #-------------------------------------------------------
 debug: True
 name_node: ns
-data_mart: your_deptarment
+data_mart: your_dept
 base: hdfs://{name_node}/user
-dfs  : "{base}/{data_mart}"
-schema  : "{dfs}/<?e>.db"
+dfs: "{base}/{data_mart}"
+schema: "{dfs}/<?e>.db"

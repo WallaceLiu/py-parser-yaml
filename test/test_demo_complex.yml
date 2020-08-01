@@ -32,10 +32,8 @@ model:
     input:
       - timeseries:
         - "{dfs.schema}/app_your_timeseries/key=sales"
-        - "{dfs.schema}/app_your_timeseries/key=priceBeforeDiscount"
-        - "{dfs.schema}/app_your_timeseries/key=priceAfterDiscount"
+        - "{dfs.schema}/app_your_timeseries/key=price"
         - "{dfs.schema}/app_your_timeseries/key=stockQuantity"
-        - "{dfs.schema}/app_your_timeseries/key=vendibility"
     output:
       dir: "{dfs.dfs}/app_your_forecast_result/dt={v_ps}/forecast_{dc}_{cate}"
       file: "{model.url.output.dir}/result_{period}_{predict}"
